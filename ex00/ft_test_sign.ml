@@ -2,8 +2,9 @@ let ft_test_sign n =
   if n < 0 then
     Printf.printf "negative\n"
   else
-    Printf.printf "positive\n" in
+    Printf.printf "positive\n"
 
-ft_test_sign 42;
-ft_test_sign 0;
-ft_test_sign (-42);
+let () =
+  ft_test_sign 42;
+  ft_test_sign 0;
+  ft_test_sign (-42)
