@@ -1,23 +1,22 @@
 let ft_rot_n n s =
   (*
-    The function rot_chr takes a char,
-    transforms it to a 'simple char', a mapping from min..max to 0..max-min
-    applies the transformation ( + n % range_size )
+    The function rotate takes a char,
+    transforms it to a 'simple char', a mapping from min..max to 0..x
+    applies the transformation ( + n mod (range + 1) )
     then transforms it back to a normal char
   *)
-  let f c =
-    let rot_chr min max c =
-      let range_size = int_of_char max - int_of_char min + 1 in
-      let to_simple c = int_of_char c - int_of_char min in
-      let from_simple s = char_of_int (s + int_of_char min) in
-      from_simple ((to_simple c + n) mod range_size) in
-    let in_range min max x = x >= min && x <= max in
-    match c with
-      | c when in_range 'a' 'z' c -> rot_chr 'a' 'z' c
-      | c when in_range 'A' 'Z' c -> rot_chr 'A' 'Z' c
-      | c -> c in
+  let rotate min max c =
+    let range = int_of_char max - int_of_char min in
+    let to_simple c = int_of_char c - int_of_char min in
+    let from_simple s = char_of_int (s + int_of_char min) in
+    from_simple ((to_simple c + n) mod (range + 1))
+    in
+  let f = function
+    | c when c >= 'a' && c <= 'z' -> rotate 'a' 'z' c
+    | c when c >= 'A' && c <= 'Z' -> rotate 'A' 'Z' c
+    | c -> c
+    in
   String.map f s
-
 
 let () =
   let test_rot_n n s =
