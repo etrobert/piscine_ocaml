@@ -16,7 +16,8 @@ let ft_print_comb () =
       ft_print_comb_r (next_comb comb)
     )
     in
-    ft_print_comb_r (0,1,2)
+    ft_print_comb_r (0,1,2);
+    print_string "\n"
 
 let () =
   ft_print_comb ()
