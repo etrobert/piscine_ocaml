@@ -16,10 +16,10 @@ let ft_is_palindrome s =
   let ss = split_string s in
   String.equal (fst ss) (string_reverse (snd ss))
 
-let test_pal s =
-  Printf.printf  "%s is a palindrome: %B\n" s (ft_is_palindrome s)
-
 let () =
+  let test_pal s =
+    Printf.printf  "%s is a palindrome: %B\n" s (ft_is_palindrome s)
+    in
   test_pal "radar";
   test_pal "madam";
   test_pal "bonbon";
