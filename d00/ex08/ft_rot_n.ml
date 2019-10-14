@@ -7,9 +7,9 @@ let ft_rot_n n s =
   *)
   let f c =
     let rot_chr min max c =
-      let range_size = Char.code max - Char.code min + 1 in
-      let to_simple c = Char.code c - Char.code min in
-      let from_simple s = Char.chr (s + Char.code min) in
+      let range_size = int_of_char max - int_of_char min + 1 in
+      let to_simple c = int_of_char c - int_of_char min in
+      let from_simple s = char_of_int (s + int_of_char min) in
       from_simple ((to_simple c + n) mod range_size) in
     let in_range min max x = x >= min && x <= max in
     match c with
