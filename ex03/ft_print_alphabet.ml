@@ -5,7 +5,7 @@ let ft_print_alphabet =
       print_char '\n'
     ) else (
       print_char c;
-      ft_print_alphabet_r (Char.chr (Char.code c + 1))
+      ft_print_alphabet_r (char_of_int (int_of_char c + 1))
     ) in
     fun () -> ft_print_alphabet_r 'a'
 
