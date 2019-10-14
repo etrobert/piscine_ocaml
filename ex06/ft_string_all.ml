@@ -1,12 +1,11 @@
-(*
-  This could be optimized.
-  Currently the function will continue checking
-  even though a character failed the test.
-*)
-
 let ft_string_all p s =
-  (* If the predicates says false the acc is set to true *)
-  not (Seq.fold_left (fun acc ch -> acc || not (p ch)) false (String.to_seq s))
+  let rec ft_string_all_r p s i =
+    match p,s,i with
+    | _, s, i when i == String.length s -> true
+    | p, s, i when p (String.get s i) == false -> false
+    | p, s, i -> ft_string_all_r p s (i + 1)
+    in
+    ft_string_all_r p s 0
 
 let () =
   let is_digit c = c >= '0' && c <= '9' in
