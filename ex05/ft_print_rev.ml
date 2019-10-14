@@ -1,7 +1,7 @@
 let ft_print_rev s =
   let rec ft_print_rev_r s i =
     if i >= 0 then (
-      print_char s.[i];
+      print_char String.get s i;
       ft_print_rev_r s (i - 1)
     )
     in
