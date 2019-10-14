@@ -18,10 +18,11 @@ let ft_rot_n n s =
       | c -> c in
   String.map f s
 
-let test_rot_n n s =
-  Printf.printf "%s (%d) ->\n%s\n" s n (ft_rot_n n s)
 
 let () =
+  let test_rot_n n s =
+    Printf.printf "%s (%d) ->\n%s\n" s n (ft_rot_n n s)
+    in
   test_rot_n 1 "abcdefghijklmnopqrstuvwxyz";
   test_rot_n 13 "abcdefghijklmnopqrstuvwxyz";
   test_rot_n 42 "0123456789";
