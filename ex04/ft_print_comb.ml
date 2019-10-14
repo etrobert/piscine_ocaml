@@ -1,4 +1,4 @@
-let ft_print_comb =
+let ft_print_comb () =
   let rec ft_print_comb_r comb =
     let next_comb = function
       | (a,8,9) -> a + 1, a + 2, a + 3
@@ -14,7 +14,7 @@ let ft_print_comb =
       ft_print_comb_r (next_comb comb)
     )
     in
-    fun () -> ft_print_comb_r (0,1,2)
+    ft_print_comb_r (0,1,2)
 
 let () =
   ft_print_comb ()
