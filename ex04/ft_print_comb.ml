@@ -6,7 +6,9 @@ let ft_print_comb () =
       | (a,b,c) -> a, b, c + 1
       in
     let print_comb (a,b,c) =
-      Printf.printf "%d%d%d" a b c
+      print_int a;
+      print_int b;
+      print_int c
       in
     print_comb comb;
     if comb <> (7,8,9) then (
