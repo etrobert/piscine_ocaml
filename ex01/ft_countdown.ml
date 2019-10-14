@@ -1,7 +1,11 @@
 let rec ft_countdown n =
   if n <= 0 then print_string "0\n"
   else
-    (Printf.printf "%d\n" n; ft_countdown (n - 1))
+    begin
+      print_int n;
+      print_char '\n';
+      ft_countdown (n - 1)
+    end
 
 let () =
   ft_countdown 3;
