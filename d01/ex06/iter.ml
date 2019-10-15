@@ -1,8 +1,7 @@
 let rec iter p x n =
-  match p, x, n with
-  | _, _, n when n < 0 -> -1
-  | _, x, 0 -> x
-  | p, x, n -> iter p (p x) (n - 1)
+  if n < 0 then -1
+  else if n = 0 then x
+  else iter p (p x) (n - 1)
 
 let () =
   let test_square ((x, n), output) =
@@ -34,4 +33,3 @@ let () =
     (1, 5), 32;
   ] in
   List.iter test_double tests_double
-
