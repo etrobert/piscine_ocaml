@@ -11,6 +11,10 @@ let rec ft_countdown n =
     end
 
 let () =
-  ft_countdown 3;
-  ft_countdown 0;
-  ft_countdown (-1)
+  let test_ft_countdown input output =
+    Printf.printf "ft_countdown %d should give %s :\n" input output;
+    ft_countdown input
+    in
+  test_ft_countdown 3 "3 2 1 0";
+  test_ft_countdown 0 "0";
+  test_ft_countdown (-1) "0"
