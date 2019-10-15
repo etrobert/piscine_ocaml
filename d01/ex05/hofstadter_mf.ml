@@ -1,12 +1,12 @@
-let rec hfs_f = function
-  | n when n < 0 -> -1
-  | 0 -> 1
-  | n -> n - hfs_m (hfs_f (n - 1))
+let rec hfs_f n =
+  if n < 0 then -1
+  else if n = 0 then 1
+  else n - hfs_m (hfs_f (n - 1))
 
-and hfs_m = function
-  | n when n < 0 -> -1
-  | 0 -> 0
-  | n -> n - hfs_f (hfs_m (n - 1))
+and hfs_m n =
+  if n < 0 then -1
+  else if n = 0 then 0
+  else n - hfs_f (hfs_m (n - 1))
 
 let () =
   let test_m (input, output) =
