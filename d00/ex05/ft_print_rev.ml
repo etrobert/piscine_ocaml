@@ -9,5 +9,10 @@ let ft_print_rev s =
   print_char '\n'
 
 let () =
-  ft_print_rev "Hello World !";
-  ft_print_rev ""
+  let test_ft_print_rev input output =
+    Printf.printf "ft_print_rev \"%s\" should be \"%s\": " input output;
+    ft_print_rev input
+    in
+  test_ft_print_rev "Hello World !" "! dlroW olleH";
+  test_ft_print_rev "madam" "madam";
+  test_ft_print_rev "" ""
