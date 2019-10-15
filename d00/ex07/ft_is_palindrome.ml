@@ -9,11 +9,15 @@ let ft_is_palindrome s =
   ft_is_palindrome_r s 0
 
 let () =
-  let test_pal s =
-    Printf.printf  "%s is a palindrome: %B\n" s (ft_is_palindrome s)
+  let test_ft_is_palindrome s output =
+    let r = ft_is_palindrome s in
+    if r = output
+    then Printf.printf "SUCCESS: ft_is_palindrome \"%s\" = %B\n" s r
+    else Printf.printf
+      "FAILURE: ft_is_palindrome \"%s\" = %B <> %B\n" s r output
     in
-  test_pal "radar";
-  test_pal "madam";
-  test_pal "bonbon";
-  test_pal "car";
-  test_pal ""
+  test_ft_is_palindrome "radar" true;
+  test_ft_is_palindrome "madam" true;
+  test_ft_is_palindrome "bonbon" false;
+  test_ft_is_palindrome "car" false;
+  test_ft_is_palindrome "" true
