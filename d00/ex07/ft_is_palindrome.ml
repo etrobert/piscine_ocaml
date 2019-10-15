@@ -1,10 +1,9 @@
 let ft_is_palindrome s =
   let len = String.length s in
   let rec ft_is_palindrome_r s i =
-    match s, i with
-    | s, i when i >= (len / 2) -> true
-    | s, i when String.get s i <> (String.get s (len - 1 - i)) -> false
-    | s, i -> ft_is_palindrome_r s (i + 1)
+    if i >= (len / 2) then true
+    else if String.get s i <> (String.get s (len - 1 - i)) then false
+    else ft_is_palindrome_r s (i + 1)
     in
   ft_is_palindrome_r s 0
 

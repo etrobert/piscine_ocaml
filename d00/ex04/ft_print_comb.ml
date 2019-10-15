@@ -1,9 +1,9 @@
 let ft_print_comb () =
   let rec ft_print_comb_r comb =
-    let next_comb = function
-      | (a,8,9) -> a + 1, a + 2, a + 3
-      | (a,b,9) -> a, b + 1, b + 2
-      | (a,b,c) -> a, b, c + 1
+    let next_comb (a, b, c) =
+      if b = 8 && c = 9 then a + 1, a + 2, a + 3
+      else if c = 9 then a, b + 1, b + 2
+      else a, b, c + 1
       in
     let print_comb (a,b,c) =
       print_int a;

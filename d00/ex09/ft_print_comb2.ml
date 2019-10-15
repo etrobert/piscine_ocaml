@@ -1,8 +1,8 @@
 let ft_print_comb2 () =
   let rec ft_print_comb2_r comb =
-    let next_comb = function
-      | (a,99) -> a + 1, a + 2
-      | (a,b) -> a, b + 1
+    let next_comb (a,b) =
+      if b ==  99 then a + 1, a + 2
+      else a, b + 1
       in
     let print_comb (a,b) =
       let print_number k = if k < 10 then print_char '0'; print_int k in

@@ -1,9 +1,8 @@
 let ft_string_all p s =
   let rec ft_string_all_r p s i =
-    match p,s,i with
-    | _, s, i when i == String.length s -> true
-    | p, s, i when p (String.get s i) == false -> false
-    | p, s, i -> ft_string_all_r p s (i + 1)
+    if i = String.length s then true
+    else if p (String.get s i) == false then false
+    else ft_string_all_r p s (i + 1)
     in
     ft_string_all_r p s 0
 

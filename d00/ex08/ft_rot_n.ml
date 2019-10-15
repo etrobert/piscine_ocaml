@@ -11,10 +11,10 @@ let ft_rot_n n s =
     let from_simple s = char_of_int (s + int_of_char min) in
     from_simple ((to_simple c + n) mod (range + 1))
     in
-  let f = function
-    | c when c >= 'a' && c <= 'z' -> rotate 'a' 'z' c
-    | c when c >= 'A' && c <= 'Z' -> rotate 'A' 'Z' c
-    | c -> c
+  let f c =
+    if c >= 'a' && c <= 'z' then rotate 'a' 'z' c
+    else if c >= 'A' && c <= 'Z' then rotate 'A' 'Z' c
+    else c
     in
   String.map f s
 
