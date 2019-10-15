@@ -1,7 +1,7 @@
 let ft_string_all p s =
   let rec ft_string_all_r p s i =
     if i = String.length s then true
-    else if p (String.get s i) == false then false
+    else if not (p (String.get s i)) then false
     else ft_string_all_r p s (i + 1)
     in
     ft_string_all_r p s 0

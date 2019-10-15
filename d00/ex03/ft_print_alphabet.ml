@@ -1,4 +1,4 @@
-let ft_print_alphabet =
+let ft_print_alphabet () =
   let rec ft_print_alphabet_r c =
     if c == 'z' then (
       print_char 'z';
@@ -7,7 +7,7 @@ let ft_print_alphabet =
       print_char c;
       ft_print_alphabet_r (char_of_int (int_of_char c + 1))
     ) in
-    fun () -> ft_print_alphabet_r 'a'
+    ft_print_alphabet_r 'a'
 
 let () =
   ft_print_alphabet ()

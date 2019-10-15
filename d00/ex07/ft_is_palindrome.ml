@@ -16,6 +16,7 @@ let () =
       "FAILURE: ft_is_palindrome \"%s\" = %B <> %B\n" s r output
     in
   test_ft_is_palindrome "radar" true;
+  test_ft_is_palindrome "raar" true;
   test_ft_is_palindrome "madam" true;
   test_ft_is_palindrome "bonbon" false;
   test_ft_is_palindrome "car" false;
