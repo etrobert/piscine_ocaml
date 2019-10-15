@@ -19,13 +19,17 @@ let ft_rot_n n s =
   String.map f s
 
 let () =
-  let test_rot_n n s =
-    Printf.printf "%s (%d) ->\n%s\n" s n (ft_rot_n n s)
+  let test_ft_rot_n (n, s) output =
+    let r = ft_rot_n n s in
+    if r = output
+    then Printf.printf "SUCCESS: ft_rot_n %d \"%s\" = \"%s\"\n" n s output
+    else
+      Printf.printf "FAILURE: ft_rot_n %d \"%s\" = \"%s\" <> \"%s\"\n" n s r output
     in
-  test_rot_n 1 "abcdefghijklmnopqrstuvwxyz";
-  test_rot_n 13 "abcdefghijklmnopqrstuvwxyz";
-  test_rot_n 42 "0123456789";
-  test_rot_n 2 "OI2EAS67B9";
-  test_rot_n 0 "Damned !";
-  test_rot_n 42 "";
-  test_rot_n 1 "NBzlk qnbjr !"
+  test_ft_rot_n (1, "abcdefghijklmnopqrstuvwxyz") "bcdefghijklmnopqrstuvwxyza";
+  test_ft_rot_n (13,  "abcdefghijklmnopqrstuvwxyz") "nopqrstuvwxyzabcdefghijklm";
+  test_ft_rot_n (42,  "0123456789") "0123456789";
+  test_ft_rot_n (2,  "OI2EAS67B9") "QK2GCU67D9";
+  test_ft_rot_n (0,  "Damned !") "Damned !";
+  test_ft_rot_n (42,  "") "";
+  test_ft_rot_n (1,  "NBzlk qnbjr !") "OCaml rocks !"
