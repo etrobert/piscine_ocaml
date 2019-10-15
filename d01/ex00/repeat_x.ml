@@ -1,7 +1,7 @@
-let rec repeat_x = function
-  | n when n < 0 -> "Error"
-  | 0 -> ""
-  | n -> repeat_x (n - 1) ^ "x"
+let rec repeat_x n =
+  if n < 0 then "Error"
+  else if n = 0 then ""
+  else repeat_x (n - 1) ^ "x"
 
 let () =
   let test (input, output) =
