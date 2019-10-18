@@ -1,6 +1,9 @@
 *.cmi
+*.cmo
 *.cmx
 *.o
+*.byt
+*.opt
 a.out
 
 *.swp
