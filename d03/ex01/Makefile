@@ -37,7 +37,8 @@ $(NAME).opt: $(OPTOBJS)
 	$(CAMLOPT) -c $<
 
 clean:
-	rm $(OBJS) $(OPTOBJS) $(NAME) $(NAME).byt $(NAME).opt
+	rm -f	$(OBJS) $(OPTOBJS) $(SOURCES:.ml=.o) $(SOURCES:.ml=.cmi)
+	rm -f $(NAME) $(NAME).byt $(NAME).opt
 
 run: $(NAME)
-	$(NAME)
+	./$(NAME)
