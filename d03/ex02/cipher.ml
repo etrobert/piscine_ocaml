@@ -35,4 +35,4 @@ let () =
   print_char '\n';
   String.iter print_int_of_char crypts;
 
-  print_string (ft_crypt alph [caesar (-42); rot42; xor 42])
+  print_endline (ft_crypt alph [caesar (-42); rot42; xor 42])
