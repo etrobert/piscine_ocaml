@@ -1,0 +1,61 @@
+CIPHER_NAME=cipher
+UNCIPHER_NAME=uncipher
+
+CIPHER_SOURCES=cipher.ml
+UNCIPHER_SOURCES=uncipher.ml
+
+CIPHER_OBJS=$(CIPHER_SOURCES:.ml=.cmo)
+CIPHER_OPTOBJS=$(CIPHER_SOURCES:.ml=.cmx)
+
+UNCIPHER_OBJS=$(UNCIPHER_SOURCES:.ml=.cmo)
+UNCIPHER_OPTOBJS=$(UNCIPHER_SOURCES:.ml=.cmx)
+
+CAMLC=ocamlc
+CAMLOPT=ocamlopt
+CAMLDEP=ocamldep
+
+LIBS=
+
+.PHONY: all opt byt clean run
+
+all: $(CIPHER_NAME) $(UNCIPHER_NAME)
+
+$(CIPHER_NAME): opt byt
+	ln -sf $(CIPHER_NAME).byt $(CIPHER_NAME)
+
+$(UNCIPHER_NAME): opt byt
+	ln -sf $(UNCIPHER_NAME).byt $(UNCIPHER_NAME)
+
+opt: $(CIPHER_NAME).opt $(UNCIPHER_NAME).opt
+byt: $(CIPHER_NAME).byt $(UNCIPHER_NAME).byt
+
+$(CIPHER_NAME).byt: $(CIPHER_OBJS)
+	$(CAMLC) -o $(CIPHER_NAME).byt $(LIBS) $(CIPHER_OBJS)
+
+$(CIPHER_NAME).opt: $(CIPHER_OPTOBJS)
+	$(CAMLOPT) -o $(CIPHER_NAME).opt $(LIBS) $(CIPHER_OPTOBJS)
+
+$(UNCIPHER_NAME).byt: $(UNCIPHER_OBJS)
+	$(CAMLC) -o $(UNCIPHER_NAME).byt $(LIBS) $(UNCIPHER_OBJS)
+
+$(UNCIPHER_NAME).opt: $(UNCIPHER_OPTOBJS)
+	$(CAMLOPT) -o $(UNCIPHER_NAME).opt $(LIBS) $(UNCIPHER_OPTOBJS)
+
+%.cmo: %.ml
+	$(CAMLC) -c $<
+
+%.cmi: %.mli
+	$(CAMLC) -c $<
+
+%.cmx: %.ml
+	$(CAMLOPT) -c $<
+
+clean:
+	rm -f	$(CIPHER_OBJS) $(CIPHER_OPTOBJS) $(CIPHER_SOURCES:.ml=.o) $(CIPHER_SOURCES:.ml=.cmi)
+	rm -f $(CIPHER_NAME) $(CIPHER_NAME).byt $(CIPHER_NAME).opt
+	rm -f	$(UNCIPHER_OBJS) $(UNCIPHER_OPTOBJS) $(UNCIPHER_SOURCES:.ml=.o) $(UNCIPHER_SOURCES:.ml=.cmi)
+	rm -f $(UNCIPHER_NAME) $(UNCIPHER_NAME).byt $(UNCIPHER_NAME).opt
+
+run: $(CIPHER_NAME) $(UNCIPHER_NAME)
+	./$(CIPHER_NAME)
+	./$(UNCIPHER_NAME)
