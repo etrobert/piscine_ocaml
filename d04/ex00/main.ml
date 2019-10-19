@@ -1,9 +1,5 @@
-let rec iter f = function
-  | [] -> ()
-  | hd::tl -> f hd; iter f tl
-
 let () =
-  iter
+  List.iter
     (fun c ->
       print_endline (Color.toString c);
       print_endline (Color.toStringVerbose c))
