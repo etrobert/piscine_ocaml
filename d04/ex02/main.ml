@@ -1,6 +1,30 @@
 let list_to_string to_string l =
   List.fold_left (fun acc x -> acc ^ to_string x ^ "; ") "[" l ^ "]"
 
+(* Card.Color Tests *)
+module Color = Card.Color
+let () =
+  List.iter
+    (fun c ->
+      print_endline (Color.toString c);
+      print_endline (Color.toStringVerbose c))
+    Color.all
+
+(* Card.Value Tests *)
+module Value = Card.Value
+let () =
+  List.iter
+    (fun v ->
+      Printf.printf "value: %d\n" (Value.toInt v);
+      Printf.printf "toString: %s\n" (Value.toString v);
+      Printf.printf "toStringVerbose: %s\n" (Value.toStringVerbose v);
+      Printf.printf "next: %s\n" (Value.toString (Value.next v));
+      Printf.printf "previous: %s\n" (Value.toString (Value.previous v));
+      print_endline "****************"
+      )
+    Card.Value.all
+
+(* Card Tests *)
 let () =
   Printf.printf "All Spades:\n%s\n"
     (list_to_string Card.toString Card.allSpades);
