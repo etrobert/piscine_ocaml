@@ -4,6 +4,7 @@
 *.o
 *.byt
 *.opt
+.depend
 a.out
 
 *.swp
