@@ -65,4 +65,8 @@ let print_radar (stats, cl) =
 let () =
   match examples_of_file "ionosphere.test.csv" with
   | [] -> print_endline "Empty file"
-  | hd::tl -> Printf.printf "Closest class from first radar is %s\n" (one_nn tl hd)
+  | hd::tl ->
+    Printf.printf
+      "Closest class from first radar is %s. Correct answer was %s\n"
+      (one_nn tl hd)
+      (radar_class hd)
