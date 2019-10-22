@@ -75,19 +75,20 @@ let k_nn l k (r:radar) =
       in
       class_name
   in
-  List.fold_left (fun acc radar_dist -> update_class acc radar_dist) []
-    match l with
-    | [] -> invalid_arg "List should not be empty"
-    | hd::tl ->
-      (List.fold_left
-         (fun l rad ->
-            let dist = radar_dist rad r in
-            let new_l = insert_in_sorted_list (fun (_, a) (_, b) -> b -. a) l (rad, dist) in
-            if List.length l < k
-            then new_l
-            else List.tl new_l)
-         [(hd, radar_dist r hd)]
-         tl)
+  match l with
+  | [] -> invalid_arg "List should not be empty"
+  | hd::tl ->
+    let top_k = List.fold_left
+        (fun l rad ->
+           let dist = radar_dist rad r in
+           let new_l = insert_in_sorted_list (fun (_, a) (_, b) -> b -. a) l (rad, dist) in
+           if List.length l < k
+           then new_l
+           else List.tl new_l)
+        [(hd, radar_dist r hd)]
+        tl
+    in
+    choose_class top_k
 
 (* Tests *)
 
@@ -102,5 +103,5 @@ let () =
   | hd::tl ->
     Printf.printf
       "Closest class from first radar is %s. Correct answer was %s\n"
-      (one_nn tl hd)
+      (k_nn tl (int_of_string (Array.get Sys.argv 1)) hd)
       (radar_class hd)
