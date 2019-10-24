@@ -1,3 +1,4 @@
+# Compilation files
 *.cmi
 *.cmo
 *.cmx
@@ -5,6 +6,10 @@
 *.byt
 *.opt
 .depend
-a.out
 
+# Programs
+a.out
+test-*
+
+# Vim swap files
 *.swp
